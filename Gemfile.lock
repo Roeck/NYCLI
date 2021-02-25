@@ -1,0 +1,25 @@
+PATH
+  remote: .
+  specs:
+    nycli (0.1.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    colorize (0.8.1)
+    nokogiri (1.11.1-x64-mingw32)
+      racc (~> 1.4)
+    open-uri (0.1.0)
+    racc (1.5.2)
+
+PLATFORMS
+  x64-mingw32
+
+DEPENDENCIES
+  colorize
+  nokogiri
+  nycli!
+  open-uri
+
+BUNDLED WITH
+   2.2.9
