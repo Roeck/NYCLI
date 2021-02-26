@@ -13,5 +13,19 @@ class NYCLI::Scraper
     def get_events
         self.get_page.css(".eventrecords li[itemtype='http://schema.org/Event']")
     end
+
+    # Scraping elements:
+
+    def show_events
+        self.get_events.each do |item|
+            event = NYC::Event.new 
+            # scraped elements
+            # For time reasons, I'll just copy and paste this part.
+        end
+    end
+
+    def self.page 
+        @@page
+    end
 end
 
