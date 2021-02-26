@@ -48,5 +48,12 @@ class NYCLI::Event
         puts "#{event.description}"
         (event.link != nil) ? (puts "\n#{@@white}To read more details or purchase tickets, visit#{event.link}") : (puts "More info to be announced")
         puts "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+    end 
+
+    # Displaying dates:
+
+    def self.dates 
+        counter = 1
+        dates = self.all.collect{|event| event.date}
     end
 end
