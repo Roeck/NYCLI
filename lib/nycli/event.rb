@@ -36,8 +36,8 @@ class NYCLI::Event
             puts event if counter == more_events
             counter += 1
             more_events += if counter > starter
-            end
         end
+    end
 
     # Displayig event details:
 
@@ -57,3 +57,5 @@ class NYCLI::Event
         dates = self.all.collect{|event| event.date}
     end
 end
+end
+

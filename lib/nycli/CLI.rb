@@ -16,7 +16,10 @@ class NYCLI::CLI
     .~~~~~~~~~~~~~~~~~.
     "
     puts "#{@@green}Select your desired events by their numbers:"
-    puts "#{@@white}numbered events\n\n"
+
+    today = NYCLI::Scraper.new()
+    today.show_events
+    NYCLI::Event.names
 
     # Showing option:
 

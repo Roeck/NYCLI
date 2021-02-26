@@ -1,8 +1,12 @@
+require 'nokogiri' 
+require 'open-uri'
+
 class NYCLI::Scraper 
+
     attr_accessor :url
     @@page = 1
 
-    def initialize(url = "https://https://www.nyc.com/events/")
+    def initialize(url = "https://www.nyc.com/events/?int4=5") 
         @url = url 
     end
 
@@ -20,7 +24,6 @@ class NYCLI::Scraper
 
     def show_events
         self.get_events.each do |item|
-            event = NYC::Event.new 
             event = NYCLI::Event.new
             event.name = item.css("h3").text.strip
             event.date = item.css(".desktop-date").text.gsub("\n                    ", ' ').strip
