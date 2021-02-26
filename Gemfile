@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in nycli.gemspec
+# Specify your gem's dependencies in NYCLI.gemspec
 gemspec
 
 gem 'nokogiri'

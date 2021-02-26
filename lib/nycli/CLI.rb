@@ -5,9 +5,9 @@ class NYCLI::CLI
     @@white = "\e[0m"
     @@red = "\e[1;31m"
     @@green = "\e[1;32m"
-    @@yellow = "\e[1;33"
-    @@blue = "\e[1;34"
-
+    @@yellow = "\e[1;33m"
+    @@blue = "\e[1;34m"
+  
     # Welcoming:
 
     puts "#{@@blue}
@@ -26,5 +26,5 @@ class NYCLI::CLI
         puts "#{@@red}Type 'exit' to quit the application.#{@@white}\n\n"
     end 
 
-    
+
 end

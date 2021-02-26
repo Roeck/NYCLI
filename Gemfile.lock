@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    nycli (0.1.0)
+    NYCLI (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -18,7 +18,7 @@ PLATFORMS
 DEPENDENCIES
   colorize
   nokogiri
-  nycli!
+  NYCLI!
   open-uri
 
 BUNDLED WITH

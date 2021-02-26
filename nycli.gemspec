@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "lib/nycli/version"
+require_relative "lib/NYCLI/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "nycli"
-  spec.version       = Nycli::VERSION
+  spec.name          = "NYCLI"
+  spec.version       = NYCLI::VERSION
   spec.authors       = ["rons9n"]
   spec.email         = ["rons9n@gmail.com"]
 
