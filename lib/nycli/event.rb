@@ -9,4 +9,12 @@ class NYCLI::Event
     def self.all
         @@all 
     end
+
+    def self.names 
+        counter = 1
+        self.all.each do |event|
+            puts "#{counter}- #{event.name}"
+            counter += 1
+        end
+    end
 end
