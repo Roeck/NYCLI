@@ -1,7 +1,7 @@
-class NYCLI::CLI  
-  
-    # Color variables:
+class NYCLI::CLI
 
+    # Color variables:
+  
     @@white = "\e[0m"
     @@red = "\e[1;31m"
     @@green = "\e[1;32m"
@@ -9,46 +9,56 @@ class NYCLI::CLI
     @@blue = "\e[1;34m"
   
     # Welcoming:
-
-    puts "#{@@blue}
-    .~~~~~~~~~~~~~~~~~.
-    | #{@@yellow}WELCOME TO NYC!#{@@blue} |
-    .~~~~~~~~~~~~~~~~~.
-    "
-    puts "#{@@green}Select your desired events by their numbers:"
-
-    today = NYCLI::Scraper.new()
-    today.show_events
-    NYCLI::Event.names
-
-    # Showing option:
-
+  
+    def self.call
+      puts "#{@@blue}
+      .~~~~~~~~~~~~~~~~~.
+      | #{@@yellow}WELCOME TO NYC!#{@@blue} |
+      .~~~~~~~~~~~~~~~~~.
+      "
+      puts "#{@@green}Select your desired events by their numbers:#{@@white}\n\n"
+  
+      today = NYCLI::Scraper.new()
+      today.show_events
+      NYCLI::Event.names
+  
+    # Show options:
+  
     def self.user_prompt
-        puts "#{@@yellow}Type 'more' to show more events.#{@@white}\n\n"
-        puts "#{@@blue}Type 'back to return to the initial list.'#{@@white}\n\n"
-        puts "#{@@red}Type 'exit' to quit the application.#{@@white}\n\n"
-    end 
-
-    # Options functionalities:
-
-    def self.action(input)
-        if input == 'more'
-            puts "showing more events"
-        elsif input == 'back'
-            puts "returning to initial list"
-        else
-            puts "#{@@red}Invalid input.Try again!"
-        end
+      puts "\n\n#{@@yellow}Type 'more' to see more events.#{@@white}\n\n"
+      puts "#{@@blue}Type 'back' to return to the initial list.#{@@white}\n\n"
+      puts "#{@@red}Type 'exit' to quit the application.#{@@white}\n\n"
     end
-
-    # Exit:
-
+  
+    def self.action(input)
+      if input == 'more'
+        NYCLI::Scraper.more
+        NYCLI::CLI.user_prompt
+  
+      elsif
+        input == 'back'
+        NYCLI::Event.names
+  
+      elsif input.to_i > 0
+        if input.to_i <= NYCLI::Event.all.count
+          index = input.to_i - 1
+          NYCLI::Event.details(index)
+        end
+  
+      else
+        puts "\n\n#{@@red}Invalid input. Try again!#{@@white}"
+      end
+    end
+  
+    # Exit program:
+    
     NYCLI::CLI.user_prompt
     input = gets.strip
-
+  
     while input != 'exit'
-        NYCLI::CLI.action(input)
-        input = gets.strip
+      NYCLI::CLI.action(input)
+      input = gets.strip
     end
-        puts "\n\n#{@@blue}Until next time!#{@@white}"
-end
+      puts "\n\n#{@@blue}Until next time!#{@@white}"
+    end
+  end

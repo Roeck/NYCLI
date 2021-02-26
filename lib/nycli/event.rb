@@ -35,7 +35,7 @@ class NYCLI::Event
             event = "#{counter}- #{event.name}"
             puts event if counter == more_events
             counter += 1
-            more_events += if counter > starter
+            more_events += 1 if counter > starter 
         end
     end
 
@@ -43,11 +43,11 @@ class NYCLI::Event
 
     def self.details(index)
         event = @@all[index]
-        puts "\n#{@@blue}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" 
+        puts "\n#{@@blue}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" 
         puts "\n#{@@blue}#{event.name.upcase}\n\n#{@@green}#{event.date} || #{event.time}\n\n@#{event.venue}"
         puts "#{event.description}"
         (event.link != nil) ? (puts "\n#{@@white}To read more details or purchase tickets, visit#{event.link}") : (puts "More info to be announced")
-        puts "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        puts "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
     end 
 
     # Displaying dates:
@@ -57,5 +57,5 @@ class NYCLI::Event
         dates = self.all.collect{|event| event.date}
     end
 end
-end
+
 
