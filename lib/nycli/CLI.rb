@@ -25,6 +25,4 @@ class NYCLI::CLI
         puts "#{@@blue}Type 'back to return to the initial list.'#{@@white}\n\n"
         puts "#{@@red}Type 'exit' to quit the application.#{@@white}\n\n"
     end 
-
-
 end
