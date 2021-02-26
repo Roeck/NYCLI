@@ -19,8 +19,13 @@ class NYCLI::Scraper
     def show_events
         self.get_events.each do |item|
             event = NYC::Event.new 
-            # scraped elements
-            # For time reasons, I'll just copy and paste this part.
+            event = NYCLI::Event.new
+            event.name = item.css("h3").text.strip
+            event.date = item.css(".desktop-date").text.gsub("\n                    ", ' ').strip
+            event.time = item.css(".datevenue strong.nyc-mobile-hidden").text
+            event.description = item.css("p[itemprop='description']").text.gsub("read more", '').strip
+            event.venue = item.css("span[itemprop='name']").text
+            event.link = "https://www.nyc.com" + item.css("a.venuelink").attr("href").text if item.css("a.venuelink").attr("href")
         end
     end
 
