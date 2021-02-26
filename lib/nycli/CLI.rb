@@ -25,4 +25,17 @@ class NYCLI::CLI
         puts "#{@@blue}Type 'back to return to the initial list.'#{@@white}\n\n"
         puts "#{@@red}Type 'exit' to quit the application.#{@@white}\n\n"
     end 
+
+    # Options functionalities:
+
+    def self.action(input)
+        if input == 'more'
+            puts "showing more events"
+        elsif input == 'back'
+            puts "returning to initial list"
+        else
+            puts "#{@@red}Invalid input.Try again!"
+        end
+    end
+
 end
