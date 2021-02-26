@@ -38,4 +38,15 @@ class NYCLI::Event
             more_events += if counter > starter
             end
         end
+
+    # Displayig event details:
+
+    def self.details(index)
+        event = @@all[index]
+        puts "\n#{@@blue}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" 
+        puts "\n#{@@blue}#{event.name.upcase}\n\n#{@@green}#{event.date} || #{event.time}\n\n@#{event.venue}"
+        puts "#{event.description}"
+        (event.link != nil) ? (puts "\n#{@@white}To read more details or purchase tickets, visit#{event.link}") : (puts "More info to be announced")
+        puts "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+    end
 end
