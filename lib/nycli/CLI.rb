@@ -38,4 +38,14 @@ class NYCLI::CLI
         end
     end
 
+    # Exit:
+
+    NYCLI::CLI.user_prompt
+    input = gets.strip
+
+    while input != 'exit'
+        NYCLI::CLI.action(input)
+        input = gets.strip
+    end
+        puts "\n\n#{@@blue}Until next time!#{@@white}"
 end
