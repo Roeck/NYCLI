@@ -10,6 +10,8 @@ class NYCLI::Scraper
         Nokogiri::HTML(URI.open(self.url))
     end
 
+    # Data structuring helper:
+
     def get_events
         self.get_page.css(".eventrecords li[itemtype='http://schema.org/Event']")
     end
@@ -31,6 +33,14 @@ class NYCLI::Scraper
 
     def self.page 
         @@page
+    end
+
+    # Scraping next events list:
+
+    def self.more
+        @@page += 1
+        NYCLI::Scraper.new("https://www.nyc.com/events/?int4=5&p=" + "#{self.page}").show_events
+        NYCLI::Event.more_names
     end
 end
 
