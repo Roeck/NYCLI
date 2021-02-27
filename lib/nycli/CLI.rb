@@ -17,7 +17,7 @@ class NYCLI::CLI
       .~~~~~~~~~~~~~~~~~.
       "
       puts "#{@@green}Select your desired events by their numbers:#{@@white}\n\n"
-  
+    
       today = NYCLI::Scraper.new()
       today.show_events
       NYCLI::Event.names
@@ -62,3 +62,4 @@ class NYCLI::CLI
       puts "\n\n#{@@blue}Until next time!#{@@white}"
     end
   end
+
