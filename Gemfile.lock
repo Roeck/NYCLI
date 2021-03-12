@@ -7,19 +7,22 @@ GEM
   remote: https://rubygems.org/
   specs:
     colorize (0.8.1)
-    nokogiri (1.11.1-x86_64-darwin)
+    mini_portile2 (2.5.0)
+    nokogiri (1.11.2)
+      mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     open-uri (0.1.0)
     racc (1.5.2)
 
 PLATFORMS
-  x86_64-darwin-19
+  ruby
 
 DEPENDENCIES
   NYCLI!
+  bundler (~> 1.17)
   colorize
   nokogiri
   open-uri
 
 BUNDLED WITH
-   2.2.3
+   1.17.3
