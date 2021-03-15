@@ -1,49 +1,53 @@
-require 'nokogiri' 
-require 'open-uri'
+require "nokogiri"
+require "open-uri"
 
-class NYCLI::Scraper 
+class NYCLI::Scraper
+  attr_accessor :url
 
-    attr_accessor :url
-    @@page = 1
+  @@page = 1
 
-    def initialize(url = "https://www.nyc.com/events/?int4=5") 
-        @url = url 
+  def initialize(url = "https://www.nyc.com/events/?int4=5")
+    @url = url
+  end
+
+  def get_page
+    Nokogiri::HTML(URI.open(self.url))
+  end
+
+  # Data structuring helper:
+
+  def get_events
+    self.get_page.css(".eventrecords li[itemtype='http://schema.org/Event']")
+  end
+
+  # Scraping elements:
+
+  def show_events
+    self.get_events.each do |item|
+      event = NYCLI::CLI.new
+      event.name = item.css("h3").text.strip
+      event.date = item.css(".desktop-date").text.gsub("\n                    ", " ").strip
+      event.time = item.css(".datevenue strong.nyc-mobile-hidden").text
+      event.description = item.css("p[itemprop='description']").text.gsub("read more", "").strip
+      event.venue = item.css("span[itemprop='name']").text
+      event.link = "https://www.nyc.com" + item.css("a.venuelink").attr("href").text if item.css("a.venuelink").attr("href")
     end
+  end
 
-    def get_page
-        Nokogiri::HTML(URI.open(self.url))
-    end
+  def self.page
+    @@page
+  end
 
-    # Data structuring helper:
+  def self.dates
+    counter = 1
+    dates = self.all.collect { |event| event.date }
+  end
 
-    def get_events
-        self.get_page.css(".eventrecords li[itemtype='http://schema.org/Event']")
-    end
+  # Scraping next events list:
 
-    # Scraping elements:
-
-    def show_events
-        self.get_events.each do |item|
-            event = NYCLI::Event.new
-            event.name = item.css("h3").text.strip
-            event.date = item.css(".desktop-date").text.gsub("\n                    ", ' ').strip
-            event.time = item.css(".datevenue strong.nyc-mobile-hidden").text
-            event.description = item.css("p[itemprop='description']").text.gsub("read more", '').strip
-            event.venue = item.css("span[itemprop='name']").text
-            event.link = "https://www.nyc.com" + item.css("a.venuelink").attr("href").text if item.css("a.venuelink").attr("href")
-        end
-    end
-
-    def self.page 
-        @@page
-    end
-
-    # Scraping next events list:
-
-    def self.more
-        @@page += 1
-        NYCLI::Scraper.new("https://www.nyc.com/events/?int4=5&p=" + "#{self.page}").show_events
-        NYCLI::Event.more_names
-    end
+  def self.more
+    @@page += 1
+    NYCLI::Scraper.new("https://www.nyc.com/events/?int4=5&p=" + "#{self.page}").show_events
+    NYCLI::CLI.more_names
+  end
 end
-
