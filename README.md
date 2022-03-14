@@ -1,5 +1,13 @@
 # NYCLI
 
+![Screen Shot 2022-03-14 at 3 28 25 AM](https://user-images.githubusercontent.com/28878478/158125287-f4f9d7c8-eb5c-47f6-92c6-0ccdf4625533.png)
+<br>
+
+![Screen Shot 2022-03-14 at 3 29 20 AM](https://user-images.githubusercontent.com/28878478/158125325-42dde6b2-750b-4154-bdd4-f4d79c02aaac.png)
+<br>
+
+
+
 A Scraping data gem for displaying current NYC events from https://nyc.com/events. 
 Its first call shows the user the last 20 events from the page.
 
@@ -23,6 +31,16 @@ And then execute:
 Or install it yourself as:
 
     $ gem install NYCLI
+    
+Run the app:
+
+   ```
+   $ cd bin
+   $ ruby nycli
+   ```
+    
+    
+NOTE: Currently works best under version 2.7.2 of Ruby.
 
 
 ## Development
