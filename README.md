@@ -11,8 +11,7 @@
 A Scraping data gem for displaying current NYC events from https://nyc.com/events. 
 Its first call shows the user the last 20 events from the page.
 
-The events are displayed in an ordered list from 1 to 20.
-Typing "more" will present the past 20 events from the current list.
+Typing "more" will present 20 events before the current list.
 
 For each selected event, its date, hours, locations, a link for more information and tickets purchase links are displayed.
 
